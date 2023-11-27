@@ -92,7 +92,7 @@ describe("UserController", () => {
         },
       });
       ctx.user = {
-        id: 51,
+        id: 1,
         email: "phares@mail.com",
         name: "Phares",
       };

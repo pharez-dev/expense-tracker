@@ -40,7 +40,7 @@ describe("AuthController", () => {
     it("should return a HttpResponseOK.", async () => {
       const userDto: UserDto = {
         email: "phares@mail.com",
-        password: Config.get("test.correctPass"),
+        password: Config.get("test.correct"),
       };
 
       const ctx = new Context({
@@ -61,7 +61,7 @@ describe("AuthController", () => {
     it('should return a HttpResponseUnauthorized when wrong "email" is provided', async () => {
       const userDto: UserDto = {
         email: "nomail@mail.com",
-        password: Config.get("test.correctPass"),
+        password: Config.get("test.correct"),
       };
 
       const ctx = new Context({
@@ -80,7 +80,7 @@ describe("AuthController", () => {
     it('should return a HttpResponseUnauthorized when wrong "password" is provided', async () => {
       const userDto: UserDto = {
         email: "phares@mail.com",
-        password: Config.get("test.wrongPass"),
+        password: Config.get("test.wrong"),
       };
 
       const ctx = new Context({
@@ -94,7 +94,8 @@ describe("AuthController", () => {
         );
       }
     });
-
+  });
+  describe('has a "register" method that', () => {
     it("should handle requests at POST /register.", () => {
       strictEqual(getHttpMethod(AuthController, "register"), "POST");
       strictEqual(getPath(AuthController, "register"), "/register");
@@ -102,7 +103,7 @@ describe("AuthController", () => {
     it("should register new users.", async () => {
       const userDto: UserDto = {
         email: "phares1@mail.com",
-        password: Config.get("test.correctPass"),
+        password: Config.get("test.correct"),
         name: "pharestest",
       };
 
@@ -118,22 +119,23 @@ describe("AuthController", () => {
         );
       }
     });
+    describe('has a "logout" method that', () => {
+      it("should handle requests at POST /logout.", () => {
+        strictEqual(getHttpMethod(AuthController, "logout"), "POST");
+        strictEqual(getPath(AuthController, "logout"), "/logout");
+      });
 
-    it("should handle requests at POST /logout.", () => {
-      strictEqual(getHttpMethod(AuthController, "register"), "POST");
-      strictEqual(getPath(AuthController, "register"), "/register");
-    });
+      it("should log out users.", async () => {
+        const ctx = new Context({});
 
-    it("should log out users.", async () => {
-      const ctx = new Context({});
+        const response = await controller.logout(ctx);
 
-      const response = await controller.logout(ctx);
-
-      if (!isHttpResponseOK(response)) {
-        throw new Error(
-          "The response should be an instance of isHttpResponseOK"
-        );
-      }
+        if (!isHttpResponseOK(response)) {
+          throw new Error(
+            "The response should be an instance of isHttpResponseOK"
+          );
+        }
+      });
     });
   });
 });

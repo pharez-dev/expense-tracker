@@ -63,7 +63,8 @@
       "coverage/**/*.js",
       "src/**/e2e/",
       "src/**/dtos/",
-      "src/**/controllers/*.spec*.ts"
+      "src/**/controllers/*.spec*.ts",
+      "docker-entrypoint.js"
     ],
     "reporter": [
       "html",

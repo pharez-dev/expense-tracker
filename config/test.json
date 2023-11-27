@@ -6,7 +6,7 @@
     }
   },
   "test": {
-    "correctPass": "env(CORRECT)",
-    "wrongPass": "env(WRONG)"
+    "correct": "env(CORRECT)",
+    "wrong": "env(WRONG)"
   }
 }
