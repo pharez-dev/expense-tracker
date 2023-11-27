@@ -3,7 +3,7 @@
 ## Overview
 
 The backend component of the Expense Tracker is developed using the FoalTS framework.
-This backend powers the APP for automatically tracking MPESA usage.
+This backend powers the APP for automatically tracking personal expenses.
 
 ![SonarQube Snapshot](images/sonarqube-snapshot.png)
 
@@ -11,7 +11,7 @@ This backend powers the APP for automatically tracking MPESA usage.
 
 - **User Authentication:** Allows users to register and log in securely to access their expense data.
 - **Database Integration:** Uses a relational database (PostgreSQL) to store user information and transactions.
-- **Creates Expenses and Categories:** Implements predefined expense categories and categorizes transactions based on merchant details.
+- **Creates Expenses and Categories:** Implements predefined expense categories and categorizes transactions based on paymentdetails.
 - **Expense Analytics:** (Planned) Provides users with analytics on spending patterns, including monthly expenditure and category-wise spending.
 - **Notifications and Alerts:** (Planned) Sends notifications or alerts for unusual or high-value transactions.
 
