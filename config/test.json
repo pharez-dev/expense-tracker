@@ -1,7 +1,23 @@
 {
   "database": {
-    "database": "./test_db.sqlite3",
+    "type": "postgres",
+    "host": "ep-delicate-wood-76941767.eu-central-1.aws.neon.tech",
+    "port": 5432,
+    "username": "pharezwk",
+    "password": "env(PGPASSWORD)",
+    "database": "expensedb",
+    "ssl": true,
     "dropSchema": true,
     "synchronize": true
+  },
+  "settings": {
+    "jwt": {
+      "secret": "env(JWT_SECRET)",
+      "secretEncoding": "base64"
+    }
+  },
+  "test": {
+    "correctPass": "env(CORRECTPASS)",
+    "wrongPass": "env(WRONGPASS)"
   }
 }

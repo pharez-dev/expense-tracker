@@ -11,3 +11,6 @@ build/
 *.sqlite3-wal
 .vscode/
 .idea/
+.nyc_output/
+.scannerwork/
+coverage/

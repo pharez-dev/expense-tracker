@@ -1,33 +1,27 @@
 // 3p
-import { createApp } from '@foal/core';
-import * as request from 'supertest';
-import { DataSource } from 'typeorm';
+import { ServiceManager, createApp } from "@foal/core";
+import * as request from "supertest";
 
 // App
-import { AppController } from '../app/app.controller';
-import { createDataSource } from '../db';
+import { AppController } from "../app/app.controller";
+import { PrismaClient } from "@prisma/client";
+import { prisma } from "../db";
 
-describe('The server', () => {
-
+describe("The server", () => {
   let app;
-  let dataSource: DataSource;
 
   before(async () => {
-    app = await createApp(AppController);
-    dataSource = createDataSource();
-    await dataSource.initialize();
+    const serviceManager = new ServiceManager().set(PrismaClient, prisma);
+    app = await createApp(AppController, { serviceManager });
   });
 
   after(async () => {
-    if (dataSource) {
-      await dataSource.destroy();
-    }
+    prisma.$disconnect().catch((err) => console.error(err));
   });
 
-  it('should return a 200 status on GET / requests.', () => {
+  it("should return a 200 status on GET / requests.", () => {
     return request(app)
-      .get('/')
+      .get("/")
       .expect(200);
   });
-
 });

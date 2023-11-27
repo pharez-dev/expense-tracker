@@ -3,6 +3,11 @@
     "debug": true,
     "logger": {
       "format": "dev"
+    },
+    "jwt": {
+      "secret": "env(JWT_SECRET)",
+      "secretEncoding": "base64"
     }
+    
   }
 }
