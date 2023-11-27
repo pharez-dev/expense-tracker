@@ -5,15 +5,5 @@
     "session": {
       "store": "@foal/typeorm"
     }
-  },
-  "database": {
-    "type": "postgres",
-    "host": "ep-delicate-wood-76941767.eu-central-1.aws.neon.tech",
-    "port": 5432,
-    "username": "pharezwk",
-    "password": "env(PGPASSWORD)",
-    "database": "expensedb",
-    "ssl":true,
-    "synchronize":true
   }
 }
