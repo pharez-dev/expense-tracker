@@ -38,14 +38,14 @@ To run the backend locally, follow these steps:
 
 2. Install dependencies:
   
-  ```bash
+   ```bash
    cd expense-tracker
    npm install
    
 4. Set up the database:
-  ```bash
-  npx prisma migrate dev --name init
+    ```bash
+    npx prisma migrate dev --name init
    
 6. Run the application:
-  ```bash
-   npm run dev
+    ```bash
+     npm run dev
