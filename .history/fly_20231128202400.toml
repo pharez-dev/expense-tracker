@@ -1,0 +1,30 @@
+# fly.toml app configuration file generated for expense-tracker-mpesa on 2023-11-27T15:08:40+03:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "expense-tracker-mpesa"
+primary_region = "jnb"
+
+[build]
+
+[[mounts]]
+  source = "data"
+  destination = "/data"
+  auto_extend_size_threshold = 0
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 256
+
+[deploy]
+  release_command = "bash -c 'npx node src/scripts/seed.js'"

@@ -1,0 +1,16 @@
+import { HttpResponse, HttpResponseOK, dependency } from "@foal/core";
+import { PrismaClient } from "@prisma/client";
+
+export class Category {
+  @dependency
+  prisma: PrismaClient;
+
+  async getAll(): Promise<HttpResponse> {
+    const allCategories = await this.prisma.expenseCategory.findMany({});
+    const response = new HttpResponseOK({
+      message: "success",
+      categories: allCategories,
+    });
+    return response;
+  }
+}
